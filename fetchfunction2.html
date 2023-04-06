@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="data">
+
+
+    </div>
+
+    <script>
+
+        fetch ("https://dummyjson.com/products")
+        .then((response) => {return response.json()})
+        .then((result) =>{
+            console.log(result)
+            data(result)
+        })
+
+  
+
+        function data(x) {
+            for (let i = 0; i<data.length; i++){
+
+         
+            const divCreate = document.createElement("div");
+            divCreate.setAttribute("class","innerdiv") 
+            const image = document.createElement("img");
+            image.src = x.products[0].thumbnail;
+
+            const brands = document.createElement("h2");
+            brands.innerHTML = x.products[0].brand
+
+            const disc = document.createElement("p")
+            disc.innerHTML = x.products[0].description
+
+            const price = document.createElement("h3");
+            price.innerHTML = x.products[0].price
+
+            document.querySelector("#data").append(divCreate)
+            document.querySelector(".innerdiv").append(image)
+            document.querySelector(".innerdiv").append(brands)
+            document.querySelector(".innerdiv").append(disc)
+            document.querySelector(".innerdiv").append(price)
+        
+        }
+        
+    }
+    
+    </script>
+    
+</body>
+</html>
